@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>TO DO </title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+        integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<style>
+    * {
+        margin: 0px;
+        padding: 0px;
+        box-sizing: border-box;
+    }
+
+    body {
+        width: 100%;
+        height: 100vh;
+    }
+
+    .heading h1 {
+        width: 100%;
+        height: 100px;
+        background: #282828;
+        color :white;
+        text-align: center;
+        font-size: 3rem;
+        text-transform: uppercase;
+        padding: 20px 0;
+    }
+
+    .addButton {
+        margin-top: 30px;
+        display: flex;
+        justify-content: center;
+    }
+
+    .addButton #addBtn {
+        width: 200px;
+        height: 50px;
+        background-color: red;
+        border: none;
+        color: white;
+        font-size: 1.5rem;
+        border-bottom-left-radius: 20px;
+        border-bottom-right-radius: 20px;
+        border-top-left-radius: 20px;
+        cursor: pointer;
+    }
+
+    .main_div {
+        width: 100%;
+        height: 30vh;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+
+    .main_div .flex {
+        margin-top: 20px;
+    }
+
+    .text textarea {
+        height: 80px;
+        width: 400px;
+        /* border: 3px solid yellow !important; */
+        font-size: 1.3rem;
+        background-color: #282828;
+        color: white;
+        cursor: text;
+        box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+    }
+
+    .extra {
+        height: 80px;
+        width: 400px;
+        /* border: 3px solid yellow !important; */
+        font-size: 1.3rem;
+        background-color: #282828;
+        color: white;
+        box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+    }
+
+    .btnGroup {
+        width: 400px;
+        height: 40px;
+        background-color: white;
+        padding-left: 330px;
+        padding-top: 8px;
+        box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+    }
+
+    .btnGroup #add {
+        width: 30px;
+        height: 25px;
+        background-color: green;
+        border: none;
+        border-radius: 30px;
+        color: white;
+        cursor: pointer;
+    }
+
+
+    .btnGroup #delete {
+        width: 30px;
+        height: 25px;
+        background-color: red;
+        border: none;
+        border-radius: 30px;
+        color: white;
+        cursor: pointer;
+    }
+
+    .hidden {
+        display: none;
+    }
+
+    @media only screen and (max-width: 768px){
+    .text textarea {
+        height: 80px;
+        width: 300px;
+        /* border: 3px solid yellow !important; */
+        font-size: 1.3rem;
+        background-color: #282828;
+        color: white;
+        cursor: text;
+        box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+    }
+
+    .extra {
+        height: 80px;
+        width: 300px;
+        /* border: 3px solid yellow !important; */
+        font-size: 1.3rem;
+        background-color: #282828;
+        color: white;
+        box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+    }
+
+    .btnGroup {
+        width: 300px;
+        height: 40px;
+        background-color: white;
+        padding-left: 230px;
+        padding-top: 8px;
+        box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+    }
+    }
+</style>
+
+<body>
+    <div class="heading">
+        <h1>ToDo List</h1>
+    </div>
+     <div class="addButton">
+        <button id="addBtn">Add Lists</button>
+    </div>
+    <div class="main_div" id="mainId"> 
+        
+    </div>
+
+</body>
+
+<script>
+    let add = document.getElementById('addBtn');
+    let divs = document.getElementById('mainId');
+
+    const updateDataInLS = () => {
+        const textAreaData = document.querySelectorAll('#textarea');
+        const notes = [];
+        textAreaData.forEach((note) => {
+            return notes.push(note.value);
+        })
+
+        localStorage.setItem("notes", JSON.stringify(notes));
+
+    }
+
+    const getNoteLists = (text = '') => {
+        const note = document.createElement('div');
+        note.classList.add('flex');
+
+        let htmlData = `
+                <div class="btnGroup">
+             
+                    <button id="add"><i class="fas fa-pen-square"></i></button>
+                    <button id="delete"><i class="far fa-trash-alt"></i></button>
+                </div>
+                <div class="text">
+                    <div class="extra ${text ? '' : 'hidden'}"></div>
+                    <textarea class="txt ${text ? 'hidden' : ''}" id="textarea" placeholder="Write Here...."></textarea>
+                </div>`;
+
+
+        note.insertAdjacentHTML('afterbegin', htmlData);
+
+        const edit = note.querySelector('#add');
+        const delBtn = note.querySelector('#delete');
+        const extraDiv = note.querySelector('.extra');
+        const textArea = note.querySelector('#textarea');
+
+        extraDiv.innerHTML = text;
+        textArea.value = text;
+
+        edit.addEventListener('click', () => {
+            extraDiv.classList.toggle('hidden');
+            textArea.classList.toggle('hidden');
+
+
+        })
+
+        delBtn.addEventListener('click', () => {
+            note.remove();
+            updateDataInLS();
+        })
+
+        textArea.addEventListener('change', (event) => {
+            let value = event.target.value;
+            extraDiv.innerHTML = value;
+
+            updateDataInLS();
+        })
+
+      divs.appendChild(note);
+    }
+
+    const notes = JSON.parse(localStorage.getItem("notes"));
+    if (notes) {
+        notes.forEach((note) => getNoteLists(note));
+    }
+
+    add.addEventListener('click', () => getNoteLists());
+</script>
+
+</html>
