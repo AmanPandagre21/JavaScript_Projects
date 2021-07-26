@@ -6,52 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>WEATHER APP</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <style>
-        body {
-            background:  #282828;
-    
-        }
-
-        .box {
-            width: 280px;
-            height: 350px;
-            background-color: darkblue;
-            padding: 20px;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            border-radius: 40px;
-            box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
-        }
-
-        .icon {
-            width: 150px;
-            height: 100px;
-            margin: auto;
-            padding-top: 20px;
-            padding-bottom: 20px;
-            display: flex;
-            justify-content: center;
-        }
-
-        .weatherInfo {
-            margin-top: 50px;
-        }
-
-        .weatherInfo h1 {
-            text-align: center;
-            color: white;
-        }
-
-        .weatherInfo p {
-            text-align: center;
-            font-size: 18px;
-            font-weight: 400;
-            margin-top: -20px;
-            color: white;
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" href="index.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
         integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -74,91 +29,6 @@
 
 </body>
 
-<script>
-    let city = document.getElementById("city");
-    let country = document.getElementById("country");
-    let dateTime = document.getElementById("dateTime");
-    let deg = document.getElementById("deg");
-    let minTemp = document.getElementById("minTemp");
-    let maxTemp = document.getElementById("maxTemp");
-    let wheathercon = document.getElementById("wheathercon");
-
-    const getCurrentDate = () => {
-        let dayarray = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
-        let montharray = [
-            "JAN",
-            "FEB",
-            "MAR",
-            "APR",
-            "MAY",
-            "JUN",
-            "JUL",
-            "AUG",
-            "SEP",
-            "OCT",
-            "NOV",
-            "DEC",
-        ];
-
-        let date = new Date();
-        let month = date.getMonth();
-        let dates = date.getDate();
-        let day = date.getDay();
-        let currentDate = dates + " | " + dayarray[day] + " | " + montharray[month + 1];
-        return currentDate;
-    }
-
-    const getCurrentTime = () => {
-        let date = new Date();
-        let hour = date.getHours();
-        let min = date.getMinutes();
-        let sec = date.getSeconds();
-        let period = "AM";
-
-        if (hour > 12) {
-            hour = hour - 12;
-            period = "PM";
-        }
-
-        if (min <= 9) {
-            min = "0" + min;
-        }
-
-        let currentTime = hour + ":" + min + ":" + sec;
-        return currentTime;
-    }
-
-
-    dateTime.innerHTML = getCurrentDate() + " -  " + getCurrentTime();
-
-    let getWeatherData = async () => {
-        let res = await fetch("https://api.openweathermap.org/data/2.5/weather?q=mumbai,in&APPID=ee697f40914031fb913084d78fbb954f");
-        let data = await res.json();
-        city.innerHTML = data.name;
-        country.innerHTML = data.sys.country;
-        deg.innerHTML = data.main.temp;
-        minTemp.innerHTML = data.main.temp_min;
-        maxTemp.innerHTML = data.main.temp_max;
-         let temstatus = data.main;
-      if (temstatus == "Sunny") {
-        wheathercon.innerHTML =
-          "<i class='fas fa-sun' style='font-size: 150px; color: yellow'></i>";
-      } else if (temstatus == "Clouds") {
-        wheathercon.innerHTML =
-          "<i class='fas fa-cloud' style='font-size: 150px; color: lightyellow'></i>";
-      } else if (temstatus == "Rainy") {
-        wheathercon.innerHTML =
-          "<i class='fas fa-cloud-rain' style='font-size: 150px; color: lightblue'></i>";
-      } else {
-        wheathercon.innerHTML =
-          "<i class='fas fa-cloud' style='font-size: 150px; color: lightyellow'></i>";
-      }
-
-    }
-
-    getWeatherData();
-
-
-</script>
+<script type="text/javascript" src="app.js"></script>
 
 </html>

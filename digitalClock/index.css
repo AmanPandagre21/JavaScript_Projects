@@ -1,0 +1,50 @@
+ * {
+                margin: 0px;
+                padding: 0px;
+                box-sizing: border-box;
+            }
+
+            body {
+               width: 100%;
+            height: 100vh;
+            background: url("black.jpg");
+            overflow: hidden;
+            }
+
+            .heading h1 {
+                text-align: center;
+            font-size: 4rem;
+            text-transform: uppercase;
+            padding-top: 50px;
+            color: white;
+            }
+
+            .main-div {
+                margin-top: 100px !important;
+                margin: auto;
+                display: flex;
+                justify-content: center;
+                font-size: 4.5rem;
+                color: cyan;
+                border-radius: 20px;
+                 box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+            }
+
+              @media only screen and (max-width: 768px){
+                .heading h1 {
+                text-align: center;
+            font-size: 4rem;
+            text-transform: uppercase;
+            padding-top: 50px;
+            padding-bottom: -40px; 
+            color: white;
+            }
+                .main-div {
+                margin-top: 150px !important;
+                margin: auto;
+                display: flex;
+                justify-content: center;
+                font-size: 1.8rem;
+                color: aqua;
+            }
+        }

@@ -1,0 +1,140 @@
+  * {
+        margin: 0px;
+        padding: 0px;
+        box-sizing: border-box;
+    }
+
+    body {
+        width: 100%;
+        height: 100vh;
+    }
+
+    .heading h1 {
+        width: 100%;
+        height: 100px;
+        background: #282828;
+        color :white;
+        text-align: center;
+        font-size: 3rem;
+        text-transform: uppercase;
+        padding: 20px 0;
+    }
+
+    .addButton {
+        margin-top: 30px;
+        display: flex;
+        justify-content: center;
+    }
+
+    .addButton #addBtn {
+        width: 200px;
+        height: 50px;
+        background-color: red;
+        border: none;
+        color: white;
+        font-size: 1.5rem;
+        border-bottom-left-radius: 20px;
+        border-bottom-right-radius: 20px;
+        border-top-left-radius: 20px;
+        cursor: pointer;
+    }
+
+    .main_div {
+        width: 100%;
+        height: 30vh;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+
+    .main_div .flex {
+        margin-top: 20px;
+    }
+
+    .text textarea {
+        height: 80px;
+        width: 400px;
+        /* border: 3px solid yellow !important; */
+        font-size: 1.3rem;
+        background-color: #282828;
+        color: white;
+        cursor: text;
+        box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+    }
+
+    .extra {
+        height: 80px;
+        width: 400px;
+        /* border: 3px solid yellow !important; */
+        font-size: 1.3rem;
+        background-color: #282828;
+        color: white;
+        box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+    }
+
+    .btnGroup {
+        width: 400px;
+        height: 40px;
+        background-color: white;
+        padding-left: 330px;
+        padding-top: 8px;
+        box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+    }
+
+    .btnGroup #add {
+        width: 30px;
+        height: 25px;
+        background-color: green;
+        border: none;
+        border-radius: 30px;
+        color: white;
+        cursor: pointer;
+    }
+
+
+    .btnGroup #delete {
+        width: 30px;
+        height: 25px;
+        background-color: red;
+        border: none;
+        border-radius: 30px;
+        color: white;
+        cursor: pointer;
+    }
+
+    .hidden {
+        display: none;
+    }
+
+    @media only screen and (max-width: 768px){
+    .text textarea {
+        height: 80px;
+        width: 300px;
+        /* border: 3px solid yellow !important; */
+        font-size: 1.3rem;
+        background-color: #282828;
+        color: white;
+        cursor: text;
+        box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+    }
+
+    .extra {
+        height: 80px;
+        width: 300px;
+        /* border: 3px solid yellow !important; */
+        font-size: 1.3rem;
+        background-color: #282828;
+        color: white;
+        box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+    }
+
+    .btnGroup {
+        width: 300px;
+        height: 40px;
+        background-color: white;
+        padding-left: 230px;
+        padding-top: 8px;
+        box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+    }
+    }
