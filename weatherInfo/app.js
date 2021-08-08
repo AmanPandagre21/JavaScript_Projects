@@ -63,6 +63,7 @@
         minTemp.innerHTML = data.main.temp_min;
         maxTemp.innerHTML = data.main.temp_max;
          let temstatus = data.main;
+         console.log( data.main);
       if (temstatus == "Sunny") {
         wheathercon.innerHTML =
           "<i class='fas fa-sun' style='font-size: 150px; color: yellow'></i>";
